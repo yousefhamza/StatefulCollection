@@ -3,7 +3,7 @@
 //  StatefulCollectionDemo
 //
 //  Created by Yousef Hamza on 10/4/20.
-//  Copyright © 2020 yousefhamz. All rights reserved.
+//  Copyright © 2020 YousefHamza. All rights reserved.
 //
 
 import UIKit

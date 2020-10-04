@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2468845B252A627C00CCB52E"
-               BuildableName = "StatefulCollection.framework"
-               BlueprintName = "StatefulCollection"
+               BlueprintIdentifier = "24688431252A58F700CCB52E"
+               BuildableName = "StatefulCollectionDemo.app"
+               BlueprintName = "StatefulCollectionDemo"
                ReferencedContainer = "container:StatefulCollection.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24688447252A58FB00CCB52E"
+               BuildableName = "StatefulCollectionDemoUITests.xctest"
+               BlueprintName = "StatefulCollectionDemoUITests"
+               ReferencedContainer = "container:StatefulCollection.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -40,6 +50,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "24688431252A58F700CCB52E"
+            BuildableName = "StatefulCollectionDemo.app"
+            BlueprintName = "StatefulCollectionDemo"
+            ReferencedContainer = "container:StatefulCollection.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +67,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2468845B252A627C00CCB52E"
-            BuildableName = "StatefulCollection.framework"
-            BlueprintName = "StatefulCollection"
+            BlueprintIdentifier = "24688431252A58F700CCB52E"
+            BuildableName = "StatefulCollectionDemo.app"
+            BlueprintName = "StatefulCollectionDemo"
             ReferencedContainer = "container:StatefulCollection.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
