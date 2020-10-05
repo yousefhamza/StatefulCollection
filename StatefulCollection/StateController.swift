@@ -17,10 +17,13 @@ open class StateController: StateElementDataSource {
 
     public init() {
         configuration = StateConfiguration()
-        let reloadButton = UIButton()
+        let reloadButton = UIButton(type: .system)
         reloadButton.setTitle("Reload", for: .normal)
         configuration.reloadButton = reloadButton
-        configuration.loadingView = UIActivityIndicatorView()
+
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.startAnimating()
+        configuration.loadingView = activityIndicatorView
         configuration.emptyLabel = defaultLabel()
         configuration.errorLabel = defaultLabel()
     }
@@ -28,7 +31,7 @@ open class StateController: StateElementDataSource {
     func defaultLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = NSLocalizedString("No records to show now, Please try again later.", comment: "")

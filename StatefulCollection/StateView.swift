@@ -26,7 +26,7 @@ class StateView: UIView {
 
     var delegate: StateElementDelegate?
     let isCompact: Bool
-    init(image: UIImage, messageLabel: UILabel, reloadButton: UIButton, delegate: StateElementDelegate?, isCompact: Bool=false) {
+    init(image: UIImage?, messageLabel: UILabel?, reloadButton: UIButton?, delegate: StateElementDelegate?, isCompact: Bool=false) {
         self.isCompact = isCompact
         super.init(frame: .zero)
 
@@ -36,7 +36,7 @@ class StateView: UIView {
         self.reloadButton = reloadButton
         self.reloadButton.addTarget(self, action: #selector(didTapReload), for: .touchUpInside)
 
-        subStack = UIStackView(arrangedSubviews: [stateMessage, reloadButton])
+        subStack = UIStackView(arrangedSubviews: [stateMessage, reloadButton ?? UIView()])
         subStack.translatesAutoresizingMaskIntoConstraints = false
         subStack.axis = .vertical
         subStack.spacing = 10
@@ -67,14 +67,21 @@ class StateView: UIView {
     }
     
     override func updateConstraints() {
-        NSLayoutConstraint.activate([
-            mainStack.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 10),
-            mainStack.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -10),
-            mainStack.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 10),
-            mainStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10),
+        var selfView: Anchorable! = nil
+        if #available(iOS 11.0, *) {
+            selfView = safeAreaLayoutGuide
+        } else {
+            selfView = self
+        }
 
-            mainStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+        NSLayoutConstraint.activate([
+            mainStack.leadingAnchor.constraint(greaterThanOrEqualTo: selfView.leadingAnchor, constant: 10),
+            mainStack.trailingAnchor.constraint(lessThanOrEqualTo: selfView.trailingAnchor, constant: -10),
+            mainStack.topAnchor.constraint(greaterThanOrEqualTo: selfView.topAnchor, constant: 10),
+            mainStack.bottomAnchor.constraint(lessThanOrEqualTo: selfView.bottomAnchor, constant: -10),
+
+            mainStack.centerXAnchor.constraint(equalTo: selfView.centerXAnchor),
+            mainStack.centerYAnchor.constraint(equalTo: selfView.centerYAnchor),
 
             stateImage.heightAnchor.constraint(lessThanOrEqualToConstant: 200),
             stateImage.widthAnchor.constraint(lessThanOrEqualToConstant: 200)
@@ -86,3 +93,19 @@ class StateView: UIView {
         delegate?.statefulElementDidTapReload()
     }
 }
+
+protocol Anchorable {
+    var leadingAnchor: NSLayoutXAxisAnchor { get }
+    var trailingAnchor: NSLayoutXAxisAnchor { get }
+    var leftAnchor: NSLayoutXAxisAnchor { get }
+    var rightAnchor: NSLayoutXAxisAnchor { get }
+    var topAnchor: NSLayoutYAxisAnchor { get }
+    var bottomAnchor: NSLayoutYAxisAnchor { get }
+    var widthAnchor: NSLayoutDimension { get }
+    var heightAnchor: NSLayoutDimension { get }
+    var centerXAnchor: NSLayoutXAxisAnchor { get }
+    var centerYAnchor: NSLayoutYAxisAnchor { get }
+}
+
+extension UILayoutGuide: Anchorable {}
+extension UIView: Anchorable {}

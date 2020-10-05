@@ -12,19 +12,19 @@ public class StatefulCollectionError: Error {
     let description: String
     let title: String?
 
-    init(title: String?, description: String) {
+    public init(title: String?=nil, description: String) {
         self.title = title
         self.description = description
     }
 }
 
 open class StateConfiguration {
-    public var reloadButton: UIButton!
-    public var loadingView: UIView!
-    public var emptyImage: UIImage!
-    public var errorImage: UIImage!
-    public var emptyLabel: UILabel!
-    public var errorLabel: UILabel!
+    public var reloadButton: UIButton?
+    public var loadingView: UIView?
+    public var emptyImage: UIImage?
+    public var errorImage: UIImage?
+    public var emptyLabel: UILabel?
+    public var errorLabel: UILabel?
 }
 
 public protocol StatefulElement: class {
